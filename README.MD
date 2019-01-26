@@ -1,3 +1,9 @@
+__Bugs and requests__: submit them through the project's issues tracker.<br>
+[![Issues](https://img.shields.io/github/issues/robmaynardjr/SmartCheck-Terraform-Lab.svg)]( https://github.com/robmaynardjr/SmartCheck-Terraform-Lab/issues ) [![GitHub tag](https://img.shields.io/github/tag-date/robmaynardjr/SmartCheck-Terraform-Lab.svg)](https://github.com/robmaynardjr/SmartCheck-Terraform-Lab/tags/)
+
+
+
+
 # **Deep Security SmartCheck Lab Template**
 
 This repository contains a terraform template to deploy a Trend Micro Deep Security SmartCheck lab into AWS. This project is configured to be launched from MacOS.
@@ -46,7 +52,7 @@ You will need an existing VPC with at least 2 subnets in 2 different availabilit
 ![](/img/sgrules.jpg)
 
 
-**The Port Range field is set to "fragmentation required, and DF flag set"**
+**Custom ICMP Rule: Protocol set to "Destination Unreachable" and port range field is set to "fragmentation required, and DF flag set"**
 
 You will also need to configure a role with ability to create and manage the EKS Cluster. The role needs to be configured with the following roles:
 
@@ -68,8 +74,9 @@ The terraform file that builds the Kubernetes cluster uses variables that need t
 
 `touch config.tf`
 
-Copy the below into config.tf. You will need to populate the variables by placing the value between the empty quotes. In the case where the variable is an AWS resource, it either requires an AWS resource ID or ARN if labeled assuch, both of which can be found in your AWS console.
+Copy the below into config.tf. You will need to populate the variables by placing the value between the empty quotes. In the case where the variable is an AWS resource, it either requires an AWS resource ID or ARN if labeled as such, both of which can be found in your AWS console.
 
+config.tf:
 ```
 data "aws_availability_zones" "available" {}
 variable "access_key" {
