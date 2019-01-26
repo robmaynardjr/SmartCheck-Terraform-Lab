@@ -4,7 +4,7 @@ __Bugs and requests__: submit them through the project's issues tracker.<br>
 
 
 
-# **Deep Security SmartCheck Lab Template**
+# **Deep Security SmartCheck Lab**
 
 This repository contains a terraform template to deploy a Trend Micro Deep Security SmartCheck lab into AWS. This project is configured to be launched from MacOS.
 
