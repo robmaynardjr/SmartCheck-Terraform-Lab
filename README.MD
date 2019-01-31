@@ -13,6 +13,10 @@ The following resources are created:
 - 1 Autoscaling group of 3, t2.medium, Kubernetes worker nodes.
 - 1 Deployment of Trend Micro Deep Security SmartCheck.
 
+For more information about Trend Micro Deep Security SmartCheck, see:
+
+https://github.com/deep-security/smartcheck-helm
+
 **An AWS account is required for this project to work.**
 
 ---
