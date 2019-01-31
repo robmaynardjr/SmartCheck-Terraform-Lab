@@ -1,5 +1,6 @@
 
 ### Terraform ###
+.DS_Store
 # Local .terraform directories
 **/.terraform/*
 **/.vscode/*
