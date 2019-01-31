@@ -87,6 +87,10 @@ variable "secret_key" {
   default = ""
 }
 
+variable "region" {
+  default = ""
+}
+
 variable "create_role_arn" {
   default = ""
 }
@@ -141,3 +145,32 @@ The EKS build takes ~9 minutes on average, and the node deployment phase takes ~
 The destroy process takes about the same amount of time as the build process.
 
 ## **EKS Control Plane pricing averages $5 a day! Make sure to `terraform destroy` when done!**
+
+## SmartCheck Access
+
+NOTES:
+
+It may take a few minutes for the LoadBalancer IP to be available.
+You can watch the status of the load balancer by running:
+
+     `kubectl get svc --watch proxy`
+
+## 1. Get the application URL by running these commands:
+###    Google Cloud or Azure:
+      `export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}')`
+###    AWS:
+      `export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')`
+      `echo https://$SERVICE_IP:443`
+
+## 2. Get the initial administrator user name and password by running these commands:
+
+      `echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)`
+      `echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)`
+
+## 3. (Optional) Replace the certificate that the service is using. 
+See the instructions in the README.md file under "Advanced Topics" > "Replacing the
+service certificate" Use the following values in the kubectl commands:
+     ```
+     Release:   deepsecurity-smartcheck
+     Secret:    deepsecurity-smartcheck-tls-certificate
+     ```
