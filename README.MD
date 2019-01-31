@@ -167,14 +167,17 @@ You can watch the status of the load balancer by running:
 
       echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)
       echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }deepsecurity-smartcheck-auth | base64 --decode)
+      
+      
+      kubectl get svc --watch proxy
 
 =======
-     ```
-     kubectl get svc --watch proxy
-     ```
+     
+ 
+     
 ## 1. Get the application URL by running these commands:
 ###    Google Cloud or Azure:
-      ```
+     
       export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
       ```
 ###    AWS:
