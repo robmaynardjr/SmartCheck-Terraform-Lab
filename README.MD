@@ -163,13 +163,13 @@ You can watch the status of the load balancer by running:
 ###    Google Cloud or Azure:
       export SERVICE_IP=$(kubectl get svc proxy -o jsonpath={.status.loadBalancer.ingress[0].ip}')
 ###    AWS:
-      export SERVICE_IP=$(kubectl get svc proxy -o jsonpath={.status.loadBalancer.ingress[0].hostname}')
+      export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
       echo https://$SERVICE_IP:443
 
 ## 2. Get the initial administrator user name and password by running these commands:
 
       echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)
-      echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }deepsecurity-smartcheck-auth | base64 --decode)
+      echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)
 
 ## 3. (Optional) Replace the certificate that the service is using. 
 See the instructions in the README.md file under "Advanced Topics" > "Replacing the
