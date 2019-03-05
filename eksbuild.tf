@@ -29,7 +29,7 @@ resource "aws_cloudformation_stack" "eks_nodes" {
         ClusterControlPlaneSecurityGroup    = "${var.eks-security-group}"
         NodeGroupName                       = "smartcheck-lab"
         NodeAutoScalingGroupMinSize         = "2"
-        NodeAutoScalingGroupMaxSize         = "3"
+        NodeAutoScalingGroupMaxSize         = "2"
         NodeInstanceType                    = "t2.medium"
         NodeImageId                         = "ami-0958a76db2d150238"
         NodeVolumeSize                      = "20"
@@ -43,7 +43,7 @@ resource "aws_cloudformation_stack" "eks_nodes" {
 output "node-role" {
         value = "${aws_cloudformation_stack.eks_nodes.outputs["NodeInstanceRole"]}"
     }
-# Add nodes to EKS Control Plane
+# Storage Class
 resource "null_resource" "eks_nodes" {
     depends_on = ["aws_eks_cluster.smartcheck", "aws_cloudformation_stack.eks_nodes"]
     provisioner "local-exec" {
@@ -55,8 +55,8 @@ resource "null_resource" "eks_nodes" {
         EOT
     }
 }
-# Deploy Deep Security SmartCheck
-resource "null_resource" "smart_check" {
+# Install Helm and Tiller
+resource "null_resource" "helm-tiller" {
     depends_on = ["null_resource.eks_nodes"]
     provisioner "local-exec" {
         command = <<EOT
@@ -72,7 +72,14 @@ resource "null_resource" "smart_check" {
         helm init --service-account tiller
 
         sleep 30
-
+        EOT
+    }
+}
+# Install Smart Check
+resource "null_resource" "smart-check" {
+    depends_on = ["null_resource.helm-tiller"]
+    provisioner "local-exec" {
+        command = <<EOT
         helm install \
             --name deepsecurity-smartcheck \
             --set auth.masterPassword=password \
