@@ -80,6 +80,7 @@ resource "null_resource" "smart-check" {
     depends_on = ["null_resource.helm-tiller"]
     provisioner "local-exec" {
         command = <<EOT
+        sleep 30
         helm install \
             --name deepsecurity-smartcheck \
             --set auth.masterPassword=password \
