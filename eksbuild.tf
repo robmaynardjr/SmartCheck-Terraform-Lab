@@ -87,4 +87,13 @@ resource "null_resource" "smart-check" {
             https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
         EOT
     }
+    provisioner "local-exec" {
+        when = "destroy"
+        command = <<EOT
+        sleep 10
+        helm delete --purge deepsecurity-smartcheck
+        sleep 10
+        EOT
+
+    }
 }
