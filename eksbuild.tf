@@ -88,3 +88,13 @@ resource "null_resource" "smart-check" {
         EOT
     }
 }
+
+resource "null_resource" "cleanup" {
+    provisioner "local-exec" {
+        on_destroy = "attempt"
+        command = <<EOT
+        sleep 10
+        EOT
+        
+    }
+}
