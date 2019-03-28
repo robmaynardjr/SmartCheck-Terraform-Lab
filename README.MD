@@ -152,6 +152,17 @@ The destroy process takes about the same amount of time as the build process.
 
 ## **EKS Control Plane pricing averages $5 a day! Make sure to `terraform destroy` when done!**
 
+
+## Troubleshooting Failed Builds
+
+ 1. Make sure you have all prerequisite software (and correct versions) installed.
+ 2. Make sure the correct version of AWS CLI is installed and configured correctly.
+ 3. Make sure AWS CLI is configured in the $PATH variable.
+ 4. Make sure the AWS Access and Secret Key used in the `config.tf` file are the same.
+    - Use `aws configure list` and compare the last 4 of the Access and Secret key in the output to the keys used in `config.tf`.
+ 5. Make sure aws-iam-authenicator is installed: `aws-iam-authenticator help`.
+   
+
 ## SmartCheck Access
 
 NOTES:
