@@ -31,6 +31,8 @@ https://github.com/deep-security/smartcheck-helm
   - https://www.python.org/
 - AWS CLI 1.16.18 or higher
   - https://docs.aws.amazon.com/cli/latest/userguide/installing.html
+- AWS-IAM-AUTHENTICATOR
+  - https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
 - Helm 2.8.0 or higher
   - https://docs.helm.sh/using_helm/#quickstart
 - kubectl
