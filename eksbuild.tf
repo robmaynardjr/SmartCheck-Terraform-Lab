@@ -3,6 +3,17 @@ provider "aws" {
     secret_key = "${var.secret_key}"
     region = "${var.region}"
 }
+
+# Deploy VPC
+
+resource "aws_vpc" "deployVPC" {
+    cidr_block = "10.0.0.0/16"
+    
+}
+
+
+
+
 # Deploy EKS Control Plane
 resource "aws_eks_cluster" "smartcheck" {
     
@@ -15,7 +26,7 @@ resource "aws_eks_cluster" "smartcheck" {
     }
     # Update local kubeconfig and test connectivity to control plane.
     provisioner "local-exec" {
-        command = "aws eks update-kubeconfig --name smartcheck && kubectl get svc" 
+        command = "aws eks update-kubeconfig --name smartcheck && kubectl get svc"
     }
 }
 # Deploy k8s worker nodes
