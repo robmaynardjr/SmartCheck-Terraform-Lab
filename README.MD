@@ -120,7 +120,32 @@ variable "eks-security-group" {
 variable "vpcKey" {
   default = ""  
 }
+
+variable "amiImage" {
+  default = ""
+}
 ```
+
+## AMI ID's
+
+AMI ID's for EKS optimized nodes to be used with this terraform plan are located in the chart below. The ID should be included in `config.tg` as the `amiImage` variable.
+
+| Region |	Amazon EKS-optimized AMI |	with GPU support |
+| ------ | --------------------------|-------------------|
+| US West (Oregon) (us-west-2) |	ami-0923e4b35a30a5f53 |	ami-0bebf2322fd52a42e|
+| US East (N. Virginia) (us-east-1) |	ami-0abcb9f9190e867ab |	ami-0cb7959f92429410a|
+| US East (Ohio) (us-east-2) |	ami-04ea7cb66af82ae4a	| ami-0118b61dc2312dee2|
+| EU (Frankfurt) (eu-central-1)	| ami-0d741ed58ca5b342e	| ami-0c57db5b204001099|
+| EU (Stockholm) (eu-north-1) |	ami-0c65a309fc58f6907 |	ami-09354b076296f5946|
+| EU (Ireland) (eu-west-1) |	ami-08716b70cac884aaa	| ami-0fbc930681258db86|
+| EU (London) (eu-west-2)	| ami-0c7388116d474ee10	| ami-0d832fced2cfe0f7b|
+| EU (Paris) (eu-west-3) |	ami-0560aea042fec8b12	| ami-0f8fa088b406ebba2|
+| Asia Pacific (Tokyo) (ap-northeast-1) |	ami-0bfedee6a7845c26d	| ami-08e41cc84f4b3f27f|
+| Asia Pacific (Seoul) (ap-northeast-2) |	ami-0a904348b703e620c |	ami-0c43b885e33fdc29e|
+| Asia Pacific (Mumbai) (ap-south-1) |	ami-09c3eb35bb3be46a4 |	ami-0d3ecaf4f3318c714|
+| Asia Pacific (Singapore) (ap-southeast-1) |	ami-07b922b9b94d9a6d2 |	ami-0655b4dbbe2d46703|
+| Asia Pacific (Sydney) (ap-southeast-2) |	ami-0f0121e9e64ebd3dc	| ami-07079cd9ff1b312da|
+
 
 ## Launch Template
 
