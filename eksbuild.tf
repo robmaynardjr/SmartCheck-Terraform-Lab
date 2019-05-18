@@ -31,7 +31,7 @@ resource "aws_cloudformation_stack" "eks_nodes" {
         NodeAutoScalingGroupMinSize         = "2"
         NodeAutoScalingGroupMaxSize         = "2"
         NodeInstanceType                    = "t2.medium"
-        NodeImageId                         = "ami-0958a76db2d150238"
+        NodeImageId                         = "${var.amiImage}"
         NodeVolumeSize                      = "20"
         KeyName                             = "${var.vpcKey}"
         VpcId                              = "${var.vpcID}"
