@@ -94,3 +94,17 @@ resource "null_resource" "smart-check" {
 
     }
 }
+
+# Deploy Jenkins Pod
+resource "null_resource" "jenkins" {
+    depends_on = ["null_resource.helm-tiller", "null_resource.smart-check"]
+    provisioner "local-exec" {
+        command = <<EOT
+        sleep 5
+        helm install \
+            --name jenkins \
+            --values overrides.yaml \
+            stable/jenkins
+        EOT
+    }
+}
