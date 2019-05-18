@@ -39,10 +39,7 @@ resource "aws_cloudformation_stack" "eks_nodes" {
     }
 
 }
-# Output NodeInstanceRole ARN Created in node cloudformation. Needed to add nodes to control plane.
-output "node-role" {
-        value = "${aws_cloudformation_stack.eks_nodes.outputs["NodeInstanceRole"]}"
-    }
+
 # Storage Class
 resource "null_resource" "eks_nodes" {
     depends_on = ["aws_eks_cluster.smartcheck", "aws_cloudformation_stack.eks_nodes"]
