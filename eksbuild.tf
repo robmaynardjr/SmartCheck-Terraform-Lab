@@ -91,7 +91,6 @@ resource "null_resource" "smart-check" {
         helm delete --purge deepsecurity-smartcheck
         sleep 10
         EOT
-
     }
 }
 
@@ -103,8 +102,18 @@ resource "null_resource" "jenkins" {
         sleep 5
         helm install \
             --name jenkins \
-            --values overrides.yaml \
+            -f './helm/jenkins/values.yaml' \
             stable/jenkins
         EOT
     }
+
+    provisioner "local-exec" {
+        when = "destroy"
+        command = <<EOT
+        sleep 10
+        helm delete --purge jenkins
+        sleep 10
+        EOT
+    }
 }
+

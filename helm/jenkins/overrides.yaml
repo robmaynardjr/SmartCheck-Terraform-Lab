@@ -1,7 +1,0 @@
-master:
-  numExecutors: 1
-  adminPassword: ''
-  installPlugins: 
-    - deepsecurity-smartcheck-plugin:1.1.2
-    - blueocean:1.16.0
-    - amazon-ecr:1.6
