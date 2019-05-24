@@ -91,6 +91,29 @@ resource "null_resource" "smart-check" {
         helm delete --purge deepsecurity-smartcheck
         sleep 10
         EOT
-
     }
 }
+
+# Deploy Jenkins Pod
+resource "null_resource" "jenkins" {
+    depends_on = ["null_resource.helm-tiller", "null_resource.smart-check"]
+    provisioner "local-exec" {
+        command = <<EOT
+        sleep 5
+        helm install \
+            --name jenkins \
+            -f './helm/jenkins/values.yaml' \
+            stable/jenkins
+        EOT
+    }
+
+    provisioner "local-exec" {
+        when = "destroy"
+        command = <<EOT
+        sleep 10
+        helm delete --purge jenkins
+        sleep 10
+        EOT
+    }
+}
+

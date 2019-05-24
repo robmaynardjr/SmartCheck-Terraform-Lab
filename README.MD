@@ -3,7 +3,6 @@ __Bugs and requests__: submit them through the project's issues tracker.<br>
 
 
 
-
 # **Deep Security SmartCheck Lab**
 
 This repository contains a terraform template to deploy a Trend Micro Deep Security SmartCheck lab into AWS. This project is configured to be launched from MacOS.
@@ -12,10 +11,19 @@ The following resources are created:
 - 1 AWS EKS Kubernetes control plane.
 - 1 Autoscaling group of 3, t2.medium, Kubernetes worker nodes.
 - 1 Deployment of Trend Micro Deep Security SmartCheck.
+- 1 Kubernetes deployment of Jenkins w/ Deep Security SmartCheck Plugin Installed.
 
 For more information about Trend Micro Deep Security SmartCheck, see:
 
 https://github.com/deep-security/smartcheck-helm
+
+For more information, including overrides information, about the Jenkins Helm deployment, see:
+
+https://github.com/helm/charts/tree/master/stable/jenkins
+
+For more information about the Deep Security Smart Check plugin, see:
+
+https://github.com/deep-security/smartcheck-plugin
 
 **An AWS account is required for this project to work.**
 
