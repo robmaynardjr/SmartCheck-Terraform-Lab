@@ -1,6 +1,7 @@
 
 ### Terraform ###
 .DS_Store
+values.yaml
 # Local .terraform directories
 **/.terraform/*
 **/.vscode/*
