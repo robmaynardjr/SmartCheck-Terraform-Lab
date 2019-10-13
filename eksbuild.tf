@@ -79,8 +79,8 @@ resource "null_resource" "smart-check" {
         command = <<EOT
         sleep 30
         helm install \
-            --name deepsecurity-smartcheck \
-            --set auth.masterPassword=password \
+            --name dssc \
+            --values ./overrides.yaml \
             https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
         EOT
     }
@@ -102,7 +102,7 @@ resource "null_resource" "jenkins" {
         sleep 5
         helm install \
             --name jenkins \
-            -f './helm/jenkins/values.yaml' \
+            -f './helm/jenkins/jenkins-values.yaml' \
             stable/jenkins
         EOT
     }

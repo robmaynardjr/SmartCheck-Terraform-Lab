@@ -2,6 +2,7 @@
 ### Terraform ###
 .DS_Store
 values.yaml
+overrides.yaml
 jenkins-values.yaml
 # Local .terraform directories
 **/.terraform/*
