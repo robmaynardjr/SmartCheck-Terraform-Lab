@@ -80,7 +80,7 @@ resource "null_resource" "smart-check" {
         sleep 30
         helm install \
             --name dssc \
-            --values ./overrides.yaml \
+            --values ./sc-values.yaml \
             https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
         EOT
     }
@@ -88,7 +88,7 @@ resource "null_resource" "smart-check" {
         when = "destroy"
         command = <<EOT
         sleep 10
-        helm delete --purge deepsecurity-smartcheck
+        helm delete --purge dssc
         sleep 10
         EOT
     }
@@ -102,7 +102,7 @@ resource "null_resource" "jenkins" {
         sleep 5
         helm install \
             --name jenkins \
-            -f './helm/jenkins/jenkins-values.yaml' \
+            -f './helm/jenkins/values.yaml' \
             stable/jenkins
         EOT
     }
